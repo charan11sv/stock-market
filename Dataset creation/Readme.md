@@ -7,7 +7,7 @@ This repo contains three modular notebooks plus concise docs that together form 
 
 ---
 
-## TL;DR (for interviewers)
+## TL;DR
 
 - **What this demonstrates**
   - Practical **ETL** for market data, **NLP** for daily sentiment, and **feature engineering** for ML.
