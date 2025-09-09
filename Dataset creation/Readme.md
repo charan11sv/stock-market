@@ -25,7 +25,7 @@ This repo contains three modular notebooks plus concise docs that together form 
 |---|---|
 | `equity data extraction.ipynb` | Extract NSE/BSE tickers and fetch historical OHLCV data; logs failures. |
 | `sentiment_scores.ipynb` | Fetch financial news (RSS/GDELT), score with VADER, aggregate per company/day. |
-| `Dataset creation main.ipynb` | Merge, clean, create lags, learn feature weights, and output the final dataset. |
+| `Dataset creation main.ipynb` | Merge, clean, create lags, learn feature weights, and output the final dataset. (feature engineering for all the 80+ signals |
 | `equity data extraction documentation.md` | Documentation for the equity notebook. |
 | `sentiment scores creation documentation.md` | Documentation for the sentiment notebook. |
 | `main dataset creation documention.md` | Documentation for the final dataset notebook. |
