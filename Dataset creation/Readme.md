@@ -1,4 +1,4 @@
-# 📦 Stock + News Sentiment — Dataset Creation Pipeline
+#  Stock + News Sentiment — Dataset Creation Pipeline
 
 > Build a modeling-ready market dataset by combining **equity price data** (NSE/BSE) with **news-driven sentiment** and engineered features.
 
