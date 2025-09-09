@@ -1,4 +1,4 @@
-#  Stock + News Sentiment — Dataset Creation Pipeline
+#  Indian Stock Market & News Feature Factory — Modeling-Ready Parquet with 80+ Engineered Signals
 
 > Build a modeling-ready market dataset by combining **equity price data** (NSE/BSE) with **news-driven sentiment** and engineered features.
 
