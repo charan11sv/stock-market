@@ -55,26 +55,109 @@
 
 ---
 
-## What Actually Ran in This Notebook (Concrete Pipeline)
+## What I Actually Did in the Notebook 
 
-1. **Load**: `final_cleaned.parquet` → DataFrame.
-2. **Explore**: print columns; compute null counts; focus on numeric features.
-3. **Preprocess**:
-   - Replace `inf`/`-inf` → `NaN`
-   - **Mean-impute** missing values
-   - **Standardize** numeric features
-4. **Feature Selection**:
-   - **RFE** with `LinearRegression` → keep top `num_features` (configurable).
-5. **Company-wise loop** (batch of 2 companies at a time):
-   - Filter rows for the chosen companies
-   - Prepare `X`, `y`; drop identifier columns for training
-   - **Optionally train LightGBM**
-   - **Optionally train Transformer**
-   - **Optionally save** models and **continue** to next batch
-6. **Parallel LGBM (optional)**: skeleton to run multiple param sets with `ThreadPoolExecutor`.
-7. **Save/Load**: implemented utilities for both models.
+This notebook was an early experimental sandbox where I explored different approaches for stock price prediction.  
+Here’s everything I attempted, step by step:
 
-> **Important note:** In this early notebook, the Transformer’s input was shaped as `(batch, seq_len=1, num_features)`. That means it learned **intra-row** feature interactions but **not** the intended **row-to-row temporal patterns**. Fixing this requires a sequence window + positional encodings.
+---
+
+### 1) Dataset Loading & Exploration
+- Loaded the dataset: **`final_cleaned.parquet`**
+- Inspected:
+  - Column names
+  - Null value counts
+- Focused on **numeric features** for preprocessing.
+
+---
+
+### 2) Feature Engineering & Selection
+- **Cleaning**: replaced `inf/-inf` with `NaN`, filled missing values with column means.
+- **Scaling**: applied `StandardScaler` to normalize features.
+- **Variance Inflation Factor (VIF)**: checked for multicollinearity.
+- **Principal Component Analysis (PCA)**: tested dimensionality reduction.
+- **Recursive Feature Elimination (RFE)**: used `LinearRegression` to select top `num_features`.
+
+---
+
+### 3) Models Attempted
+- **LightGBM (LGBMRegressor)**
+  - Tree-based boosting model, trained on reduced/scaled features.
+- **Transformer**
+  - Custom PyTorch `nn.TransformerEncoder` model.
+  - Trained as a regressor with MSE loss and Adam optimizer.
+  - Early design only saw each row as a **sequence of length 1** (captured feature relationships but not row-to-row temporal dependencies).
+  - Later attempted **mini-batch training** with `DataLoader`.
+- **Ensemble**
+  - Combined predictions from LightGBM and Transformer to compare RMSEs.
+
+---
+
+### 4) Training Approaches
+- **Company-wise training**
+  - Processed **two companies at a time** to fit within memory limits.
+- **Interactive orchestration**
+  - Notebook prompted whether to:
+    - Train LightGBM
+    - Train Transformer
+    - Save models
+    - Continue training or stop
+- **Parallelization**
+  - Added a `ThreadPoolExecutor` wrapper to test **parallel LightGBM runs**.
+- **Model Persistence**
+  - Saved models:
+    - LightGBM → `.pkl`
+    - Transformer → `.pth`
+  - Reloaded models for continued training.
+
+---
+
+### 5) Experiments & Results
+- Ran multiple Transformer training configurations:
+  - **200 epochs @ 0.01 LR**
+  - **3000 epochs @ 0.001 LR**
+  - **20000 epochs @ 0.001 LR**  
+- Documented **RMSEs**:
+  - LightGBM
+  - Transformer
+  - Ensemble (best RMSEs often close to LightGBM baseline).
+- **Hyperparameter tuning for LightGBM**
+  - Used **KFold cross-validation**.
+  - Searched over `n_estimators`, `learning_rate`, `max_depth`, `num_leaves`, `lambda_l1`, `lambda_l2`, etc.
+  - Logged **best trials** and RMSEs.
+- Compared performance on **different subsets of companies**:
+  - 10, 50, 100, 500 companies.
+- Noted cases where **training failed** due to local resource constraints.
+
+---
+
+### 6) Sampling Strategies
+Because full dataset training was too heavy locally:
+- Trained on **smaller subsets of companies**.
+- Used **reduced estimators**.
+- Treated this as a **learning exercise** and validated pipelines before scaling to Kaggle.
+
+---
+
+### 7) Persistence
+- LightGBM models saved as `.pkl`.
+- Transformer models saved as `.pth`.
+- Reloading functionality implemented for both.
+
+---
+
+###  Summary
+In this notebook I:
+- Explored **feature selection methods** (RFE, PCA, VIF).
+- Trained **LightGBM** (tabular patterns) and **Transformer** (feature interactions).
+- Built a simple **ensemble** of both.
+- Ran **hyperparameter tuning** with KFold and parameter sweeps.
+- Tested **sampling and scaling strategies** under resource limits.
+- Implemented **interactive training loops, model saving/loading, and parallelization skeletons**.
+- Collected and logged **RMSE results** across experiments.
+
+> Even though this notebook had limitations (seq_len=1 Transformer, no full dataset runs locally), it laid the groundwork for moving to **Kaggle** for larger-scale experiments, while teaching me important lessons about **resource-aware design, preprocessing, and model orchestration**.
+
 
 ---
 
