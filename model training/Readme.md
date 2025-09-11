@@ -50,7 +50,7 @@ This repository contains all experiments, documentation, and notebooks related t
 
 ---
 
-## 🚀 How to Navigate
+##  How to Navigate
 
 1. Start with **`stock_lgbm_training_10days_pred.ipynb`** for the final LightGBM 10-day prediction pipeline.  
    - See **`model training/lgbm_training_readme.md`** for the detailed documentation.  
