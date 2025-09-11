@@ -254,7 +254,7 @@ Most ClusterGAN examples are on labeled/“nice” benchmarks (MNIST etc.). **Ma
 
 ---
 
-## Future Plans (as in the notebook)
+## Future Plans 
 
 1. **Strengthen `z_n`**  
    - Adjust loss weights / heads so **continuous latent** captures richer intra-cluster variation (avoid over-dominant `z_c`).
@@ -262,7 +262,7 @@ Most ClusterGAN examples are on labeled/“nice” benchmarks (MNIST etc.). **Ma
 2. **Systematic K sweep**  
    - Full **K ∈ [2, 100]** with **multiple seeds**, **temporal robustness** (train earlier, test later), and pick K that generalizes.
 
-3. **Add exogenous signals**  
+3. **Add more exogenous signals**  
    - **Macro**, **event/news**, **risk** proxies (e.g., earnings events, macro calendars) to explain the **~10%** volatile slice.
 
 4. **Company-aware learning**  
@@ -276,4 +276,5 @@ Most ClusterGAN examples are on labeled/“nice” benchmarks (MNIST etc.). **Ma
    - Increase epochs after stability knobs fixed; try deeper MLPs or light **temporal** modules (e.g., TCN).
 
 ---
+
 
