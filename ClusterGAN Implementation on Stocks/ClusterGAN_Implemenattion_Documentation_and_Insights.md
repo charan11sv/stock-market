@@ -33,13 +33,7 @@
   - [Why These Results Make Sense](#why-these-results-make-sense)
 - [What I Did — Step by Step](#what-i-did--step-by-step)
 - [Future Plans (as in the notebook)](#future-plans-as-in-the-notebook)
-- [Reproducibility](#reproducibility)
-  - [Environment](#environment)
-  - [How to Run](#how-to-run)
-  - [Repository Layout](#repository-layout)
-- [FAQ & Troubleshooting](#faq--troubleshooting)
-- [References](#references)
-- [License](#license)
+
 
 ---
 
@@ -283,6 +277,3 @@ Most ClusterGAN examples are on labeled/“nice” benchmarks (MNIST etc.). **Ma
 
 ---
 
-## Reproducibility
-
-### Environment
