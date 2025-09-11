@@ -47,6 +47,30 @@
 - **Plots**: `matplotlib`  
 - **Persistence**: `joblib`  
 
+### Test Set Results 
+
+The following are the average percentage errors (MAPE) for each prediction horizon:
+
+| Horizon  | MAPE  |
+|----------|-------|
+| close_1  | 5.87% |
+| close_2  | 8.82% |
+| close_3  | 10.75% |
+| close_4  | 10.84% |
+| close_5  | 12.63% |
+| close_6  | 13.83% |
+| close_7  | 14.35% |
+| close_8  | 14.68% |
+| close_9  | 15.57% |
+| close_10 | 17.37% |
+
+**Key Observations:**
+- **Short-horizon forecasts (1–2 days)** are fairly accurate (~6–9% MAPE).  
+- **Errors increase steadily with horizon length**, reaching ~17% by day 10 (expected in financial time series).  
+- Confirms the model generalizes well on unseen test data and captures short-term price dynamics effectively.
+
+
+
 Install (example):
 ```bash
 pip install polars pandas numpy lightgbm scikit-learn optuna matplotlib joblib
