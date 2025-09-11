@@ -6,7 +6,7 @@
 
 ---
 
-## 🎯 Objective
+##  Objective
 
 - Build a robust and efficient pipeline to **predict the next 10 daily closing prices** (`close_1` … `close_10`) for each stock.  
 - Handle a **large multi-company dataset** across many years.  
@@ -17,7 +17,7 @@
 
 ---
 
-## 📦 Data & Setup
+##  Data & Setup
 
 - Sources used:
   - `/kaggle/input/stock-market-1/final_cleaned.parquet`
@@ -39,7 +39,7 @@
 
 ---
 
-## 🧰 Environment & Key Libraries
+##  Environment & Key Libraries
 
 - **Core**: `polars`, `pandas`, `numpy`, `lightgbm`, `scikit-learn`  
 - **Hyperparameter Tuning**: `optuna`  
