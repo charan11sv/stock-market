@@ -30,14 +30,14 @@ This repository contains all experiments, documentation, and notebooks related t
 
 ---
 
-### 3. Cloud Training
+### 3. Cloud Training (In progress)
 - **`lgbm via aws.ipynb`**
   - Notebook adapted for running LightGBM training on **AWS**.
   - Useful for large-scale experiments beyond local/Kaggle resources.
 
 ---
 
-### 4. Testing & Simulation (New)
+### 4. Testing & Simulation (New) (In progress)
 - **`testing-stock-model-1.ipynb`**
   - Notebook for **testing results** of the trained LightGBM model.
   - Evaluates saved predictions and performance on unseen data.
