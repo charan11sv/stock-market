@@ -1,4 +1,4 @@
-# Stock Forecasting & Experiments — Repository Overview
+# Repository Overview
 
 This repository contains all experiments, documentation, and notebooks related to my work on **multi-horizon stock prediction** using **LightGBM** and exploratory **hybrid approaches (LightGBM + Transformers)**.
 
