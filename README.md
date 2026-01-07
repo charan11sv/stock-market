@@ -8,4 +8,4 @@ this repo has all the notebooks i worked on with the NSE stock data.It has seper
 
 
 
-"Each notebooks have their own set of documentations in '.md' format that can guide you with those notebooks."
+"Each notebooks in each folder have their own set of documentations in '.md' format that can guide you with those notebooks."
